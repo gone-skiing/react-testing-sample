@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.1"
@@ -27,5 +28,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "5.16.0",
+    "eslint-config-react-tools": "^2.0.5",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "7.14.2",
+    "fetch-mock": "^5.12.2",
+    "prettier": "^1.18.2"
   }
 }
