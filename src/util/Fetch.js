@@ -1,3 +1,6 @@
+// !!! Note that we are not doing
+//     import fetch from 'isomorphic-fetch';
+// That would prevent fetchMock from mocking the fetch calls properly.
 import 'isomorphic-fetch';
 
 export function fetchIngredients() {
@@ -9,9 +12,10 @@ export function fetchIngredients() {
       },
     },
   )
-    .then(response => response.json())
+    .then(response => {
+      return response.json();
+    })
     .catch(error => {
-      // eslint-disable-next-line no-console
-      console.log('Error', error);
+      throw error;
     });
 }

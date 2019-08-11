@@ -1,11 +1,14 @@
 import React from 'react';
+import Comments from './comments/containers/Comments';
 
 function App() {
   return (
     <div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <h3>
+        Examples of testing react components with react testing library and
+        comparison with enzyme.
+      </h3>
+      <Comments />
     </div>
   );
 }
