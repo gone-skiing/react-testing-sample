@@ -10,9 +10,9 @@ function CommentCard(props) {
   const {author, comment} = props;
 
   return (
-    <div>
+    <div className="comment-card">
       <p>{comment}</p>
-      <p>- {author}</p>
+      <p className="author-tag">- {author}</p>
     </div>
   );
 }

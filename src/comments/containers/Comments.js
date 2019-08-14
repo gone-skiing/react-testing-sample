@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {addComment, fetchComments} from '../comment-actions';
 import CommentList from '../components/CommentList';
 import CommentCreate from '../components/CommentCreate';
+import '../comments.css';
 
 class Comments extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Comments extends Component {
     const {comments} = this.props;
 
     return (
-      <div>
+      <div className="comments-container">
         <CommentCreate onSubmit={this.handleAddComment} />
         <CommentList comments={comments} />
       </div>

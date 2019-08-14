@@ -1,0 +1,54 @@
+.comments-container {
+    display: block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.comment-form {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.comment-entry {
+    font: inherit;
+    width: 100%;
+    height: 8rem;
+    margin: 1rem 0;
+}
+
+.comment-author {
+    font: inherit;
+    width: 50%;
+    margin-left: 1rem;
+    padding: .5rem;
+}
+
+button {
+    margin-top: 12px;
+    width: 12rem;
+    color: #ffffff;
+    background-color: #767676;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: inherit;
+}
+
+.comment-card {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 2px 2rem;
+    font-style: italic;
+    background-color: #f5f5f5;
+    height: 80px;
+    position: relative;
+    border: 1px solid #767676;
+    border-radius: 8px;
+}
+
+.author-tag {
+    position: absolute;
+    bottom: 0;
+    right: 2rem;
+}

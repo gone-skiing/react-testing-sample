@@ -9,16 +9,23 @@ class CommentCreate extends PureComponent {
     const {handleSubmit, invalid, pristine, submitting} = this.props;
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form className="comment-form" onSubmit={handleSubmit}>
         <Field
+          className="comment-entry"
           component="textarea"
           name="comment"
           placeholder="Write something..."
         />
 
         <Form.Group controlId="author">
-          <Form.Label>Your Name</Form.Label>
-          <Field component="input" id="author" name="author" type="text" />
+          <Form.Label>Your Name: </Form.Label>
+          <Field
+            className="comment-author"
+            component="input"
+            id="author"
+            name="author"
+            type="text"
+          />
         </Form.Group>
 
         <Button disabled={pristine || submitting || invalid} type="submit">

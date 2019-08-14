@@ -1,16 +1,10 @@
-// these imports are something you'd normally configure Jest to import for you
-// automatically. Learn more in the setup docs: https://testing-library.com/docs/react-testing-library/setup#cleanup
-import '@testing-library/react/cleanup-after-each';
-
-// NOTE: jest-dom adds handy assertions to Jest and is recommended, but not required
-//import '@testing-library/jest-dom/extend-expect';
-
 import React from 'react';
 import {fireEvent, render, wait} from '@testing-library/react';
 
 import Comments from '../Comments';
 import fetchMock from 'fetch-mock';
 import ContainerTestWrapper from '../../../test/ContainerTestWrapper';
+import {expectNoConsoleErrors} from '../../../setupTests';
 
 const comments = {
   1: {
@@ -52,6 +46,8 @@ describe('Comments tests', () => {
 
     getByText(comments[2].comment);
     getByText(`- ${comments[2].author}`);
+
+    expectNoConsoleErrors();
   });
 
   it('It creates a new comment and renders it', async () => {
@@ -78,7 +74,7 @@ describe('Comments tests', () => {
     // Add new comment
     const submitButton = getByText('Add Comment');
     const commentTextfieldNode = getByPlaceholderText('Write something...');
-    const nameFieldNode = getByLabelText('Your Name');
+    const nameFieldNode = getByLabelText('Your Name:');
 
     fireEvent.change(commentTextfieldNode, {
       target: {value: newComment.comment},
@@ -92,5 +88,7 @@ describe('Comments tests', () => {
 
     expect(commentTextfieldNode.value).toEqual('');
     expect(nameFieldNode.value).toEqual('');
+
+    expectNoConsoleErrors();
   });
 });

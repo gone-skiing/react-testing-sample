@@ -4,7 +4,7 @@ import Comments from './comments/containers/Comments';
 function App() {
   return (
     <div>
-      <h3>
+      <h3 className="header">
         Examples of testing react components with react testing library and
         comparison with enzyme.
       </h3>

@@ -32,7 +32,7 @@ describe('Comment Create', () => {
 
     expect(submitButton.disabled).to.be.true;
 
-    const nameFieldNode = getByLabelText('Your Name');
+    const nameFieldNode = getByLabelText('Your Name:');
     fireEvent.change(nameFieldNode, {target: {value: author}});
 
     expect(submitButton.disabled).to.be.false;
