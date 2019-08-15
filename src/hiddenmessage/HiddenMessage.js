@@ -24,7 +24,7 @@ class HiddenMessage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="hidden-message-container">
         <button onClick={this.toggle}>Toggle</button>
         <Fade in={this.state.show}>
           <div>Hello world</div>

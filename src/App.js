@@ -10,7 +10,7 @@ function App() {
         comparison with enzyme.
       </h2>
 
-      <h3>Hidden message</h3>
+      <h3 className="header">Hidden message</h3>
       <HiddenMessage />
 
       <hr />

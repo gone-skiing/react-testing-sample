@@ -1,3 +1,9 @@
+.hidden-message-container {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
 .fade-enter {
     opacity: 0;
 }
