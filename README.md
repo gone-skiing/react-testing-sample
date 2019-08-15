@@ -1,7 +1,6 @@
-This repo contains examples of testing react application with react-testing-library and enzyme. It serves as a reference point and can be used as a sandbox 
-to try out different use cases.
+This repo contains examples of testing react application with react-testing-library and enzyme. It serves as a reference point and a sandbox to experiment with different use cases.
 
-### Background
+## Overview
 
 [Revisiting react testing in 2019](https://codeburst.io/revisiting-react-testing-in-2019-ee72bb5346f4)
 
@@ -17,15 +16,15 @@ evangelist: Kent Dodds. The gist of his ideas can be summarized through a number
 >
 > — Kent Dodds 
 
-###Unit level examples 
+#### Unit level examples 
 Repo also includes a number of unit level examples that illustrate pieces required to put together complete integration tests. 
-* Fetch mocking
-* Async methods
+* Mocking fetch post and get methods
+* Waiting for Async methods
 * Chai assertions
 * Chai as promised
-* Routing
+* Testing react router
 
-###End to end integration tests for Comments component
+#### End to end integration tests for Comments component
 * Rendering assertions
 * Navigation assertions
 * Form validation and submitting
@@ -34,12 +33,12 @@ Repo also includes a number of unit level examples that illustrate pieces requir
 
 [Original article that is the source of Comments List example](https://medium.com/flatiron-labs/creating-readable-tests-using-react-testing-library-2bd03c49c284)
 
-###Enzyme vs React testing library compare with HiddenMessage tests
-This code illustrates discussion in [Why I Never Use Shallow Rendering.](https://blog.kentcdodds.com/why-i-never-use-shallow-rendering-c08851a68bb7).
+#### Enzyme vs React testing library compare with HiddenMessage tests
+This code illustrates discussion in [Why I Never Use Shallow Rendering.](https://blog.kentcdodds.com/why-i-never-use-shallow-rendering-c08851a68bb7)
  
-### Frameworks used
+## Frameworks used
 
-####Jest
+#### Jest
 
 Javascript testing framework, provides engine to execute tests.
 https://jestjs.io/docs/en/getting-started
@@ -57,7 +56,7 @@ https://www.chaijs.com/plugins/chai-as-promised/
 
 `npm install —save-dev chai chai-as-promised` 
 
-####React Testing Library 
+#### React Testing Library 
 Builds on top of DOM Testing Library by adding APIs for working with React components.
 https://testing-library.com/docs/react-testing-library/intro
 
@@ -86,7 +85,7 @@ It also uses
 
 In the project directory, you can run:
 
-#### `npm start`
+`npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -94,13 +93,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-#### `npm test`
+`npm test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### `npm test -- --coverage`
+`npm test -- --coverage`
 
 Will report test coverage for the project.
 
+## Gotchas
 
+1. Forms require working redux store with reducers or fields will not react to changes. 
+
+2. isomorphic-fetch must be imported as follows or mock will not work
+
+    `import fetch from 'isomorphic-fetch';`
+
+3. Make sure that browser router does not interfere with in memory router or initial values will not work
+    ```
+    const rrd = require('react-router-dom');
+    rrd.BrowserRouter = ({children}) => <div>{children}</div>;
+    module.exports = rrd;
+    ```
