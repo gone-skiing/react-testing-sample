@@ -1,13 +1,21 @@
 import React from 'react';
 import Comments from './comments/containers/Comments';
+import HiddenMessage from './hiddenmessage/HiddenMessage';
 
 function App() {
   return (
     <div>
-      <h3 className="header">
+      <h2 className="header">
         Examples of testing react components with react testing library and
         comparison with enzyme.
-      </h3>
+      </h2>
+
+      <h3>Hidden message</h3>
+      <HiddenMessage />
+
+      <hr />
+
+      <h3 className="header">Comments</h3>
       <Comments />
     </div>
   );

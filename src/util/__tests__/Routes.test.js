@@ -15,6 +15,9 @@ const rrd = require('react-router-dom');
 rrd.BrowserRouter = ({children}) => <div>{children}</div>;
 module.exports = rrd;
 
+/**
+ * https://medium.com/@antonybudianto/react-router-testing-with-jest-and-enzyme-17294fefd303
+ */
 describe('routes using memory router', () => {
   it('should show Home component for / router (using memory router)', () => {
     const {getByText} = render(
