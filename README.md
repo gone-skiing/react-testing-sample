@@ -16,6 +16,8 @@ evangelist: Kent Dodds. The gist of his ideas can be summarized through a number
 >
 > — Kent Dodds 
 
+[Refactoring an enzyme component test to use react testing library](https://medium.com/flatiron-labs/refactoring-an-enzyme-component-test-to-use-react-testing-library-f5c36da6716f) is a side by side comparison of two test frameworks.
+
 #### Unit level examples 
 Repo also includes a number of unit level examples that illustrate pieces required to put together complete integration tests. 
 * Mocking fetch post and get methods
@@ -102,7 +104,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Will report test coverage for the project.
 
-## Gotchas
+## Interesting patterns and Gotchas
 
 1. Forms require working redux store with reducers or fields will not react to changes. 
 
@@ -116,3 +118,23 @@ Will report test coverage for the project.
     rrd.BrowserRouter = ({children}) => <div>{children}</div>;
     module.exports = rrd;
     ```
+
+4. Shortcut to map dispatch to props
+
+TODO
+
+## Open questions
+
+1. Preferred framework?
+
+1. Keep the other framework in the projects for special cases or remove completely to avoid accidental use?
+
+1. Test location?
+    * same directory as component under test or
+    * `__tests__` directory 
+    
+1. What tests are expected as part of **done**?
+
+1. Next steps?
+    * Update on-boarding docs;
+

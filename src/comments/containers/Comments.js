@@ -25,12 +25,12 @@ class Comments extends Component {
   }
 
   render() {
-    const {comments} = this.props;
+    const {comments, error} = this.props;
 
     return (
       <div className="comments-container">
         <CommentCreate onSubmit={this.handleAddComment} />
-        <CommentList comments={comments} />
+        <CommentList comments={comments} error={error} />
       </div>
     );
   }
@@ -39,6 +39,7 @@ class Comments extends Component {
 Comments.propTypes = {
   addComment: PropTypes.func.isRequired,
   comments: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.string,
   fetchComments: PropTypes.func.isRequired,
 };
 
@@ -47,6 +48,7 @@ function mapStateToProps(state) {
 
   return {
     comments: comment.comments,
+    error: comment.error,
   };
 }
 

@@ -8,12 +8,15 @@ const rootReducer = combineReducers({
   form: forms, // must be named form, or redux form fields will not work
 });
 
-const composeEnhancers =
-  process.env.NODE_ENV === 'development'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose;
+export default function configureStore(
+  preloadedState = {},
+  nodeEnv = process.env.NODE_ENV,
+) {
+  const composeEnhancers =
+    nodeEnv === 'development'
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose;
 
-export default function configureStore(preloadedState = {}) {
   return createStore(
     rootReducer,
     preloadedState,

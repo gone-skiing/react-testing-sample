@@ -3,6 +3,7 @@ import {fireEvent, render, wait} from '@testing-library/react';
 
 import Comments from '../Comments';
 import fetchMock from 'fetch-mock';
+import {expect} from 'chai';
 import ContainerTestWrapper from '../../../test/ContainerTestWrapper';
 import {expectNoConsoleErrors} from '../../../setupTests';
 
@@ -21,7 +22,6 @@ const comments = {
 
 describe('Comments tests', () => {
   beforeEach(() => {
-    fetchMock.get('*', Promise.resolve(comments));
     fetchMock.post('*', 200);
   });
 
@@ -31,6 +31,7 @@ describe('Comments tests', () => {
 
   it('It fetches comments and renders them to the page', async () => {
     // Arrange
+    fetchMock.get('*', Promise.resolve(comments));
 
     // Act
     const {getByText} = render(
@@ -50,6 +51,25 @@ describe('Comments tests', () => {
     expectNoConsoleErrors();
   });
 
+  it('It renders error when fetch fails', async () => {
+    // Arrange
+    const MY_ERROR = 'my error';
+    fetchMock.get('*', Promise.reject(MY_ERROR));
+
+    // Act
+    const {getByText, queryByText} = render(
+      <ContainerTestWrapper>
+        <Comments />
+      </ContainerTestWrapper>,
+    );
+
+    // Assert
+
+    await wait(() => getByText(MY_ERROR));
+    expect(queryByText(comments[2].comment)).to.be.null;
+    expectNoConsoleErrors();
+  });
+
   it('It creates a new comment and renders it', async () => {
     // Arrange
     const newComment = {
@@ -57,6 +77,8 @@ describe('Comments tests', () => {
       comment: 'Brave new world of testing',
       author: 'Noah Olsen',
     };
+
+    fetchMock.get('*', Promise.resolve(comments));
 
     // Act
 
@@ -86,8 +108,8 @@ describe('Comments tests', () => {
     // the form clears
     await wait(() => getByText(`- ${newComment.author}`));
 
-    expect(commentTextfieldNode.value).toEqual('');
-    expect(nameFieldNode.value).toEqual('');
+    expect(commentTextfieldNode.value).to.equal('');
+    expect(nameFieldNode.value).to.equal('');
 
     expectNoConsoleErrors();
   });

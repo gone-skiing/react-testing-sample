@@ -8,9 +8,9 @@ ContainerTestWrapper.propTypes = {
 };
 
 function ContainerTestWrapper(props) {
-  const {children, preloadedState} = props;
+  const {children, nodeEnv, preloadedState} = props;
 
-  const myStore = configureStore(preloadedState);
+  const myStore = configureStore(preloadedState, nodeEnv);
 
   return <Provider store={myStore}>{React.cloneElement(children)}</Provider>;
 }
