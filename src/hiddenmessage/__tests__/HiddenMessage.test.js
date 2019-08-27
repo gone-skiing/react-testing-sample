@@ -2,6 +2,7 @@ import React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {render, fireEvent} from '@testing-library/react';
 import HiddenMessage from '../HiddenMessage';
+import {expectNoConsoleErrors} from '../../setupTests';
 
 // NOTE: you do NOT have to do this in every test.
 // Learn more about Jest's __mocks__ directory:
@@ -24,11 +25,13 @@ describe('HiddenMessage react testing library', () => {
     const defaultProps = {children, timeout: 1000, classNames: 'fade'};
 
     // Act
-    const {getByText, queryByText} = render(
+    const {debug, getByText, queryByText} = render(
       <HiddenMessage initialShow={true} />,
     );
 
     // Assert
+    expectNoConsoleErrors();
+
     const toggleButton = getByText(/toggle/i);
     expect(CSSTransition).toHaveBeenCalledWith(
       {in: true, ...defaultProps},
@@ -40,10 +43,13 @@ describe('HiddenMessage react testing library', () => {
     CSSTransition.mockClear();
     fireEvent.click(toggleButton);
 
+    expectNoConsoleErrors();
     expect(CSSTransition).toHaveBeenCalledWith(
       {in: false, ...defaultProps},
       context,
     );
     expect(queryByText(/hello world/i)).toBeNull();
+
+    debug();
   });
 });

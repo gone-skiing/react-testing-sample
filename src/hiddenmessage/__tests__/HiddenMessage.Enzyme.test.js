@@ -25,11 +25,14 @@ describe('HiddenMessage enzyme', () => {
    * - set onClick of the button to this.tgogle instead of this.toggle. My test continues to work, but my component is broken.
    * - rename toggle to handleButtonClick (and update the corresponding onClick reference). My test breaks despite this being a refactor.
    */
-  test('toggle toggles the state of show', () => {
+  it('toggle toggles the state of show', () => {
     const wrapper = shallow(<HiddenMessage initialShow={true} />);
     expect(wrapper.state().show).toBe(true); // initialized properly
+
     wrapper.instance().toggle();
     wrapper.update();
     expect(wrapper.state().show).toBe(false); // toggled
+
+    console.log(wrapper.debug());
   });
 });

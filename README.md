@@ -58,6 +58,13 @@ https://www.chaijs.com/plugins/chai-as-promised/
 
 `npm install —save-dev chai chai-as-promised` 
 
+#### Eslint chai friendly
+Chai shortcut syntax expect(...).to.be.null triggers default eslint validation
+This plugin overrides it for just chai expressions.
+https://www.npmjs.com/package/eslint-plugin-chai-friendly
+
+`npm install eslint-plugin-chai-friendly`
+
 #### React Testing Library 
 Builds on top of DOM Testing Library by adding APIs for working with React components.
 https://testing-library.com/docs/react-testing-library/intro
@@ -110,7 +117,7 @@ Will report test coverage for the project.
 
 2. isomorphic-fetch must be imported as follows or mock will not work
 
-    `import fetch from 'isomorphic-fetch';`
+    `import 'isomorphic-fetch';`
 
 3. Make sure that browser router does not interfere with in memory router or initial values will not work
     ```
