@@ -10,7 +10,10 @@
       "jsx": true
     }
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react",
+    "chai-friendly"
+  ],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
@@ -23,6 +26,12 @@
         "allow": ["warn", "error"]
       }
     ],
+
+    // Chai shortcut syntax expect(...).to.be.null triggers default eslint validation
+    // This plugin overrides it for just chai expressions.
+    // https://www.npmjs.com/package/eslint-plugin-chai-friendly
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,
 
     // Import sorting does not take into account react vs mabl libraries. Turned off for now.
     "sort-imports": ["off", {

@@ -49,6 +49,7 @@
     "enzyme-adapter-react-16": "^1.10.0",
     "eslint": "5.16.0",
     "eslint-config-react-tools": "^2.0.5",
+    "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "7.14.2",
     "fetch-mock": "^5.12.2",
