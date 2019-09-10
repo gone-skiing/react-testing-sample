@@ -1,10 +1,40 @@
+import {expect} from 'chai';
+
+/**
+ * Combine both jest and chai matchers on expect
+ *
+ * https://medium.com/@RubenOostinga/combining-chai-and-jest-matchers-d12d1ffd0303
+const originalNot = Object.getOwnPropertyDescriptor(
+  chai.Assertion.prototype,
+  'not',
+).get;
+Object.defineProperty(chai.Assertion.prototype, 'not', {
+  get() {
+    Object.assign(this, this.assignedNot);
+    return originalNot.apply(this);
+  },
+  set(newNot) {
+    this.assignedNot = newNot;
+    return newNot;
+  },
+});
+
+const originalExpect = global.expect;
+
+global.expect = actual => {
+  const originalMatchers = originalExpect(actual);
+  const chaiMatchers = chai.expect(actual);
+  return Object.assign(chaiMatchers, originalMatchers);
+};
+
+*/
+
 // these imports are something you'd normally configure Jest to import for you
 // automatically. Learn more in the setup docs: https://testing-library.com/docs/react-testing-library/setup#cleanup
 import '@testing-library/react/cleanup-after-each';
 
 // NOTE: jest-dom adds handy assertions to Jest and is recommended, but not required
 //import '@testing-library/jest-dom/extend-expect';
-import {expect} from 'chai';
 
 // Please keep track of these and do not leave them here for too long.
 const knownErrors = [

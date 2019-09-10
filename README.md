@@ -18,6 +18,8 @@ evangelist: Kent Dodds. The gist of his ideas can be summarized through a number
 
 [Refactoring an enzyme component test to use react testing library](https://medium.com/flatiron-labs/refactoring-an-enzyme-component-test-to-use-react-testing-library-f5c36da6716f) is a side by side comparison of two test frameworks.
 
+[Discussion in unlock project](https://github.com/unlock-protocol/unlock/issues/467)
+
 #### Unit level examples 
 Repo also includes a number of unit level examples that illustrate pieces required to put together complete integration tests. 
 * Mocking fetch post and get methods
@@ -127,6 +129,8 @@ Will report test coverage for the project.
     ```
 
 4. Shortcut to map dispatch to props
+
+5. await waitForElement(() => getByText("O"));
 
 TODO
 
