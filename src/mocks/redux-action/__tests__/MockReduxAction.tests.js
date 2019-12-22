@@ -11,14 +11,16 @@ import {expectNoConsoleErrors} from '../../../setupTests';
 import {SOME_ACTION} from '../redux-action-actions';
 import ComponentWithDispatchProp from '../ComponentWithDispatchProp';
 
+beforeEach(() => {
+  jest.spyOn(allActions, 'someAction').mockImplementation(() => {
+    return {type: SOME_ACTION, message: 'Mock message'};
+  });
+});
+
 afterEach(fetchMock.restore);
 
 describe('Mock redux actions', () => {
   it('It fails to mock with action creator approach', () => {
-    jest.spyOn(allActions, 'someAction').mockImplementation(() => {
-      return {type: SOME_ACTION, message: 'Mock message'};
-    });
-
     // Act
     const {getByText, queryByText} = render(
       <ContainerTestWrapper>
@@ -35,10 +37,6 @@ describe('Mock redux actions', () => {
   });
 
   it('It mocks with traditional dispatch prop approach', () => {
-    jest.spyOn(allActions, 'someAction').mockImplementation(() => {
-      return {type: SOME_ACTION, message: 'Mock message'};
-    });
-
     // Act
     const {getByText, queryByText} = render(
       <ContainerTestWrapper>
@@ -49,7 +47,7 @@ describe('Mock redux actions', () => {
     // Assert
     expectNoConsoleErrors();
 
-    // This should really be a mock message, but we find real one
+    // This should be a mock message
     getByText('Mock message');
     expect(queryByText('Real message')).to.be.null;
   });
