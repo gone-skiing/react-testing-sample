@@ -3,12 +3,19 @@ import {reducer as forms} from 'redux-form';
 import thunk from 'redux-thunk';
 import commentReducer from './comments/comment-reducers';
 import reduxActionReducer from './mocks/redux-action/redux-action-reducers';
+import {connectRouter} from 'connected-react-router';
+import {createBrowserHistory} from 'history';
+import {logger} from 'redux-logger';
 
-const rootReducer = combineReducers({
-  comment: commentReducer,
-  reduxAction: reduxActionReducer,
-  form: forms, // must be named form, or redux form fields will not work
-});
+const createRootReducer = history =>
+  combineReducers({
+    comment: commentReducer,
+    reduxAction: reduxActionReducer,
+    router: connectRouter(history),
+    form: forms, // must be named form, or redux form fields will not work
+  });
+
+export const history = createBrowserHistory();
 
 export default function configureStore(
   preloadedState = {},
@@ -20,8 +27,8 @@ export default function configureStore(
       : compose;
 
   return createStore(
-    rootReducer,
+    createRootReducer(history),
     preloadedState,
-    composeEnhancers(applyMiddleware(thunk)),
+    composeEnhancers(applyMiddleware(thunk, logger)),
   );
 }

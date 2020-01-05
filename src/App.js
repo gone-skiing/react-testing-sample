@@ -1,6 +1,7 @@
 import React from 'react';
 import Comments from './comments/containers/Comments';
 import HiddenMessage from './hiddenmessage/HiddenMessage';
+import ConnectedRouterRoutes from './connected-router/ConnectedRouterRoutes';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
 
       <h3 className="header">Comments</h3>
       <Comments />
+
+      <h3 className="header">Connected Router</h3>
+      <ConnectedRouterRoutes />
     </div>
   );
 }
